@@ -1,0 +1,24 @@
+# Environments
+.venv/
+.env/
+
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Data & Models
+data/
+models/
+mlruns/
+mlflow.dbmodel_package/ 
+mlflow.db 
+mlruns/ 

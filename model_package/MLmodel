@@ -1,0 +1,25 @@
+artifact_path: file:///C:/Users/Abhis/OneDrive/Desktop/Projects/Learning/Decision
+  Trees/Production Grade Learning/diabetes_api/mlruns/1/models/m-8c647929341b4006a1d1bfedc2a4f157/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.skops
+    predict_fn: predict
+    python_version: 3.11.8
+  sklearn:
+    code: null
+    pickled_model: model.skops
+    serialization_format: skops
+    sklearn_version: 1.9.0
+    skops_trusted_types:
+    - diabetes_api.preprocessing.EfronScaler
+mlflow_version: 3.16.0
+model_id: m-8c647929341b4006a1d1bfedc2a4f157
+model_size_bytes: 14481
+model_uuid: m-8c647929341b4006a1d1bfedc2a4f157
+prompts: null
+run_id: 04cfa4580330420db062bee44532a41d
+utc_time_created: '2026-09-20 09:38:04.946913'
