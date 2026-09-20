@@ -1,6 +1,7 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException
 import mlflow
+import os
 
 from diabetes_api.schemas import PatientFeatures, PredictionResponse
 
@@ -8,10 +9,13 @@ ml_models = {}
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    mlflow.set_tracking_uri("sqlite:///mlflow.db")
-    model_uri = "models:/diabetes_progression_model@champion"
+    model_uri = os.getenv("MODEL_URI", "models:/diabetes_progression_model@champion")
+
+    if model_uri.startswith("models:/"):
+        mlflow.set_tracking_uri("sqlite:///mlflow.db")
+
     ml_models["champion"] = mlflow.sklearn.load_model(model_uri)
-    yield 
+    yield
     ml_models.clear()
 
 app = FastAPI(title = "Diabetes Progression API", lifespan = lifespan)
