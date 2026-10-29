@@ -1,6 +1,7 @@
-from pydantic import BaseModel, Field
 from typing import Literal
+
 import numpy as np
+from pydantic import BaseModel, Field
 
 FEATURE_NAMES = ["age", "sex", "bmi", "bp", "s1", "s2", "s3", "s4", "s5", "s6"]
 
@@ -24,5 +25,10 @@ class PatientFeatures(BaseModel):
         return np.array([[getattr(self, col) for col in FEATURE_NAMES]])
     
 class PredictionResponse(BaseModel):
-    disease_progression_score: float = Field(..., description="Predicted progression score one year baseline")
-    reference_range: str = Field(default="25 to 346", description="Expected baseline range per Phase 0 contract")
+    disease_progression_score: float = Field(
+        ..., description="Predicted progression score one year baseline"
+        )
+    reference_range: str = Field(
+        default="25 to 346", 
+        description="Expected baseline range per Phase 0 contract",
+        )

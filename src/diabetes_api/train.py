@@ -1,12 +1,12 @@
 import mlflow
 import mlflow.sklearn
-from sklearn.datasets import load_diabetes
-from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.pipeline import Pipeline
-from sklearn.metrics import r2_score, mean_absolute_error
-from sklearn.linear_model import LinearRegression, Ridge
 import numpy as np
+from sklearn.datasets import load_diabetes
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.linear_model import LinearRegression, Ridge
+from sklearn.metrics import mean_absolute_error, r2_score
+from sklearn.model_selection import GridSearchCV, cross_val_score, train_test_split
+from sklearn.pipeline import Pipeline
 
 from diabetes_api.preprocessing import EfronScaler
 
@@ -114,8 +114,11 @@ def main():
         client = mlflow.tracking.MlflowClient()
         client.set_registered_model_alias(registered_name, "champion", mv.version)
 
-        print("\nArtifact logged and aliased as champion. Run `uv run mlflow ui --backend-store-uri sqlite:///mlflow.db --host 127.0.0.1` to view.")
-
+        print(
+            "\nArtifact logged and aliased as @champion.\n"
+            "Run `uv run mlflow ui --backend-store-uri sqlite:///mlflow.db "
+            "--host 127.0.0.1` to view."
+        )
 
 if __name__ == "__main__":
     main()
